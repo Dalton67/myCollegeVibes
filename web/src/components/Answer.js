@@ -8,8 +8,14 @@ class Answer extends Component {
         this.setState({ 
             clicked: false 
         })
+        this.handleClick = this.handleClick.bind(this)
     }
-
+    handleClick(){
+        this.setState({
+            clicked: true
+        })
+        console.log(this.props.choice)
+    }
     render() {
         const { choice, playlistId, answerClass } = this.props
         let playlistLink = "https://open.spotify.com/embed/playlist/" + playlistId;
@@ -17,7 +23,7 @@ class Answer extends Component {
             <div class={answerClass}>
                 <a 
                     href="javascript:void(0)" 
-                    onclick="this.setState({ clicked: true }" 
+                    onClick={this.handleClick} 
                     className="answer-header"> 
                         {choice} 
                 </a>

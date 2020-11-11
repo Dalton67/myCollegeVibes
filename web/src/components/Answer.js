@@ -4,21 +4,17 @@ class Answer extends Component {
 
     constructor(props) {
         super(props);
-
-        this.setState({ 
-            clicked: false 
-        })
         this.handleClick = this.handleClick.bind(this)
     }
-    handleClick(){
-        this.setState({
-            clicked: true
-        })
-        console.log(this.props.choice)
+
+    handleClick() {
+        const{ onClick, choice } = this.props
+        onClick(choice)
     }
+
     render() {
-        const { choice, playlistId, answerClass } = this.props
-        let playlistLink = "https://open.spotify.com/embed/playlist/" + playlistId;
+        const { choice, playlistUri, answerClass } = this.props
+        let playlistLink = "https://open.spotify.com/embed/playlist/" + playlistUri
         return (
             <div class={answerClass}>
                 <a 

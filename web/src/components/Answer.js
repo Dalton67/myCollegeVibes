@@ -30,7 +30,7 @@ class Answer extends Component {
                     frameborder="0"
                     allowtransparency="true" 
                     allow="encrypted-media" 
-                    class="playlist"/>
+                    className="playlist"/>
             </div>
         );
     }

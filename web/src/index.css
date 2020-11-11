@@ -40,15 +40,6 @@ span.navbar-text {
   font-family: 'RobotoMono-Thin';
 }
 
-h3 {
-  font-family: 'RobotoMono-Thin';
-  font-size: 35pt;
-  color: var(--green);
-  position: absolute;
-  margin-left: 4em;
-  margin-top: 0.4em;
-}
-
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -56,23 +47,15 @@ body {
   background-color: var(--black);
 }
 
-p {
-  font-family: "RobotoMono-Light";
-  font-size: 26pt;
-  color: var(--green);
-  padding: 0em 3.2em;
-}
-
 .btn-to-quiz {
   display:inline-block;
   padding:1em 0.8em;
-  margin:0 0.2em 0.2em 0;
   border-radius:0.75em;
   box-sizing: border-box;
   text-decoration:none;
   font-family:'RobotoMono-BoldItalic';
   font-weight:400;
-  font-size: 30pt;
+  font-size: 3vw;
   color:var(--green);
   background-color: var(--timber);
   box-shadow: -10px 10px var(--grey);
@@ -84,35 +67,16 @@ p {
   background-color: var(--grey);
   box-shadow: -10px 10px var(--grey-dark);
 }
-
+/* 
 @media all and (max-width:30em){
   .btn-to-quiz{
     display:block;
     margin:0.4em auto;
   }
-} 
-
-.page {
-  width:100%;
-}
-
-.home {
-  text-align: center;
-  width: 100%;
-}
+}  */
 
 .logo {
   width:80%;
-}
-
-.music1 {
-  position: absolute;
-  right: 12em;
-}
-
-.music2 {
-  position: absolute;
-  left: 10em;
 }
 
 .answer1 {
@@ -155,4 +119,31 @@ transform: rotate(10deg);
 
 .green-text {
   color: green;
+}
+
+p {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+  font-family: 'RobotoMono-Thin';
+  color: var(--green);
+}
+
+.title-text {
+  font-size: 4.5vw; 
+}
+
+.description-text {
+  font-size: 3vw;
+}
+
+.justify-center {
+  text-align: center;
+}
+
+.justify-right {
+  text-align: right;
+}
+
+.justify-left {
+  text-align: left;
 }

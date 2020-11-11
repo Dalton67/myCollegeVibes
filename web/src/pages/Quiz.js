@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Question from '../components/Question.js';
 import Logo from '../images/white-spotify-logo.png';
 import { Navbar, Image, Container, Col } from "react-bootstrap";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
  
 class Quiz extends Component {
 
@@ -61,7 +61,12 @@ class Quiz extends Component {
   render() {
     const { questionList, questionNumber, questionAnswers } = this.state
     if (questionNumber > questionList.length) {
-      return <Redirect to='/results' data={questionAnswers}/>
+      return <Redirect 
+        to = {{
+          pathname: "/results",
+          state: {data: questionAnswers}
+        }}
+      />
     } else {
       return (
           <>

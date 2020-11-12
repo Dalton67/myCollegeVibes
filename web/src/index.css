@@ -27,10 +27,18 @@
   src: url('./fonts/robotomono/static/RobotoMono-Light.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'RobotoMono-Medium';
+  font-weight: normal;;
+  font-style: normal;
+  src: url('./fonts/robotomono/static/RobotoMono-Medium.ttf') format('truetype');
+}
+
 :root {
   --green: #1DB954;
   --green-dark: #0c8838;
   --timber: #D3D0CB;
+  --ash: #BDCEBD;
   --grey: #5C6784;
   --grey-dark: #3A4562;
   --black: #191414;
@@ -172,20 +180,31 @@ p {
   text-align: left;
 }
 
-.example-enter {
-  opacity: 0.01;
+.results-header {
+  background-color: var(--grey);
 }
 
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
+.results-header-box {
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--grey-dark);
 }
 
-.example-leave {
-  opacity: 1;
+.results-header-text {
+  color: white;
+  font-family: 'RobotoMono-Medium';
 }
 
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
+.results-data {
+  background-color: var(--timber);
+}
+
+.results-data-box {
+  border-color: var(--ash);
+  border-width: 1px;
+  border-style: solid;
+}
+
+.results-data-text {
+  color: var(--charcoal);
 }

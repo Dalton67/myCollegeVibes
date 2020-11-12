@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import $ from "jquery"
+import Results from "../pages/Results";
  
 class Answer extends Component {
 
@@ -10,7 +12,21 @@ class Answer extends Component {
     handleClick() {
         const{ onClick, choice } = this.props
         onClick(choice)
+        console.log("clicked")
     }
+    // handleClick(){
+    //     this.setState({
+    //         clicked: true
+    //     })
+    //     $.ajax({
+    //         type:"GET",
+    //         data:'genre',
+    //         url: `https://mycollegevibes-backend.herokuapp.com/${this.props.choice}`,
+    //         success: function(data){
+    //             console.log(data);
+    //         }
+    //     })
+    // }
 
     render() {
         const { choice, playlistUri, answerClass } = this.props
@@ -23,7 +39,7 @@ class Answer extends Component {
                     className="answer-header"> 
                         {choice} 
                 </a>
-                <iframe 
+                <iframe
                     src={playlistLink} 
                     width="80%" 
                     height="380" 

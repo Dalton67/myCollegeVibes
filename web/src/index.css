@@ -34,6 +34,8 @@
   --grey: #5C6784;
   --grey-dark: #3A4562;
   --black: #191414;
+  --charcoal: #3B3E4C;
+  --eton: #78C590;
 }
 
 span.navbar-text {
@@ -132,6 +134,28 @@ p {
   font-size: 4.5vw; 
 }
 
+.quiz-title-text {
+  font-size: 3vw;
+}
+
+.quiz-header {
+  background-color: var(--charcoal);
+  font-size: 3vw;
+}
+
+.quiz-question-box {
+  background-color: var(--eton);  
+}
+
+.quiz-question-number {
+  color: var(--green-dark);
+  font-family: 'RobotoMono-Bold';
+}
+
+.quiz-question-text {
+  color: var(--timber);
+}
+
 .description-text {
   font-size: 3vw;
 }
@@ -146,4 +170,22 @@ p {
 
 .justify-left {
   text-align: left;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

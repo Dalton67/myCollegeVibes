@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Question from '../components/Question.js';
 import Logo from '../images/white-spotify-logo.png';
-import { Navbar, Image, Container, Col } from "react-bootstrap";
+import { Navbar, Image, Container, Col, Row } from "react-bootstrap";
 import { Redirect } from 'react-router-dom';
- 
+import { withRouter } from "react-router";
+
 class Quiz extends Component {
 
   constructor(props) {
@@ -72,22 +73,36 @@ class Quiz extends Component {
           <>
             <Navbar bg="#14">
               <Container fluid>
-                <Col xs="4" lg="8">
-                  <h2><span class="navbar-text"><div class="green-text">myCollegeVibes</div></span></h2>
+                <Col lg="1" />
+                <Col xs="4" lg="7">
+                  <p className="quiz-title-text justify-left">myCollegeVibes</p>
                 </Col>
                 <Col md="auto"/>
                 <Col xs="8" lg="4">
-                  <img src={Logo} alt="logo" class="logo"/>
+                  <img src={Logo} alt="logo" className="logo justify-left"/>
                 </Col>
               </Container>
             </Navbar>
+            <Container fluid>
+              <Row className="quiz-header" noGutters>
+                <Col xs="1" lg="1" />
+                <Col xs="2" lg="2" className="quiz-question-box justify-center">
+                  <p className="quiz-question-number">#{questionNumber}</p>
+                </Col>
+                <Col xs="1" lg="1" />
+                <Col xs="8" lg="auto" className="justify-left">
+                  <p className="quiz-question-text">which genre do you prefer</p>
+                </Col>
+              </Row>
+            </Container>
             <Question 
               choices={questionList[questionNumber-1]}
-              onSelect={this.nextQuestion}/>
+              onSelect={this.nextQuestion}
+            />
           </>
       );
     }
   }
 }
 
-export default Quiz;
+export default withRouter(Quiz);

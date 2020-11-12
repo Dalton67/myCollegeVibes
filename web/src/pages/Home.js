@@ -4,6 +4,7 @@ import Logo from '../images/white-spotify-logo.png';
 import Music1 from '../images/music-1.png';
 import Music2 from '../images/music-2.png';
 import { Container, Row, Col } from 'react-bootstrap';
+import { withRouter } from "react-router";
 
 class Home extends Component {
   render() {
@@ -16,12 +17,12 @@ class Home extends Component {
                 <img src={Logo} class="logo" alt="logo"/>
               </Col>
             </Row>
-            <Row className="title-text justify-center">
+            <Row className="title-text justify-center" noGutters>
               <Col>
                 <p>myCollegeVibes</p>
               </Col>
             </Row>
-            <Row className="justify-center">
+            <Row className="justify-center" noGutters>
               <Col xs="4" lg="3" className="justify-right">
                 <img src={Music2} alt=""/>
               </Col>
@@ -32,12 +33,12 @@ class Home extends Component {
                 <img src={Music1} alt=""/>
               </Col>
             </Row>
-            <Row className="justify-center description-text">
-              <Col md="1" lg="2"/>
-              <Col>
+            <Row className="justify-center description-text" noGutters>
+              <Col xs="1" lg="2"/>
+              <Col xs="10" lg="8">
                 <p>you listen to music and we tell you what university is your best fit based on your preferences</p>
               </Col>
-              <Col sm="1" lg="2"/>
+              <Col xs="1" lg="2"/>
             </Row>
         </Container>
       </>
@@ -45,4 +46,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);

@@ -4,6 +4,9 @@ from flask_cors import CORS
 import pandas as pd
 import numpy as np
 import psycopg2
+from selenium import webdriver #depends on chrome version
+from selenium.webdriver.chrome.options import Options #same as above
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 CORS(app)
@@ -129,6 +132,34 @@ def questions():
                 "Q7": "religious or pop",
                 "Q8": "rock or pop",
             }
+
+#adding route for function that take genre as input and returns spotify id
+@app.route('/playlist/<string:genreKey>')
+
+def getPlayListId(genreKey):
+    options = Options()
+    options.headless = True
+    options.add_argument("--window-size=1920,1200")
+
+    # DRIVER_PATH = 'chromedriver.exe'
+    DRIVER_PATH = "C:/Users/Sai Nikhil Naru/Desktop/chromedriver_win32/chromedriver.exe"
+    driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
+    #-----
+        #to add way to replace with classic%20.. with actual genre
+        #will parse for spaces with %20
+    #-----
+    driver.get('https://open.spotify.com/search/classic%20pop%27') 
+    #hardcoded above for now
+    page = driver.page_source
+    page_soup = BeautifulSoup(page, 'html.parser')
+    playlist_id = ""
+    for link in page_soup.find_all('a'):
+        if "/playlist/" in str(link.get('href')):
+            print("link.get ", str(link.get('href')))
+            playlist_id = str(link.get('href'))[
+                str(link.get('href')).rfind("/")+1:]
+            #print("playlist ID : ",playlist_id)
+            return playlist_id
 
 if __name__ == '__main__':
      app.run()

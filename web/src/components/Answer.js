@@ -31,6 +31,9 @@ class Answer extends Component {
     render() {
         const { choice, playlistUri, answerClass } = this.props
         let playlistLink = "https://open.spotify.com/embed/playlist/" + playlistUri
+        console.log( (playlistLink) )
+        // let playlistLink = "https://open.spotify.com/search/" + playlistUri
+
         return (
             <div class={answerClass}>
                 <a 

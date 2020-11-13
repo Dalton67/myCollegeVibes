@@ -24,14 +24,35 @@ export default function App() {
     })
     return qbank;
   }
+
+  function getSpotifyID()
+  {
+    var spotifyIDNumber;
+      $.ajax({
+        type:"GET",
+        dataType: "text",
+        async: false,
+        url: `http://localhost:5000/playlist/hardcoded`,
+        success: function(data){
+          //spotifyIDNumber = Object.values(data)
+          spotifyIDNumber = data
+        }
+    })
+    console.log(spotifyIDNumber)
+    return spotifyIDNumber;
+
+  }
+
   return (
     <React.Fragment>
       <Router>
         <div>
           <Switch>
             <Route path="/quiz">
-              {/* <Quiz questions = {getQuestions()}/> */}
-              <Quiz/>
+              {
+              /* <Quiz questions = {getQuestions()}/> */
+              <Quiz spotifyIDNumber = {getSpotifyID()}/>
+              }
             </Route>
             <Route path="/results">
               <Results />

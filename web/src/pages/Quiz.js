@@ -18,7 +18,8 @@ class Quiz extends Component {
         [ // Question 1
           {
             genre: "sovietwave",
-            playlistUri: "4WQXurIqquq1yIaIbxWsSa"
+            //playlistUri: "4WQXurIqquq1yIaIbxWsSa"
+            playlistUri: this.props.spotifyIDNumber
           },
           {
             genre: "acid rock",

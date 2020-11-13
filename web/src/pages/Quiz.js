@@ -4,12 +4,14 @@ import Logo from '../images/white-spotify-logo.png';
 import { Navbar, Image, Container, Col, Row } from "react-bootstrap";
 import { Redirect } from 'react-router-dom';
 import { withRouter } from "react-router";
+import $ from 'jquery'
 
 class Quiz extends Component {
 
   constructor(props) {
     super(props);
     this.nextQuestion = this.nextQuestion.bind(this)
+    this.getSpotifyID = this.getSpotifyID.bind(this)
   }
 
   componentWillMount() {
@@ -18,32 +20,31 @@ class Quiz extends Component {
         [ // Question 1
           {
             genre: "sovietwave",
-            //playlistUri: "4WQXurIqquq1yIaIbxWsSa"
-            playlistUri: this.props.spotifyIDNumber
+            playlistUri: this.getSpotifyID("sovietwave")
           },
           {
             genre: "acid rock",
-            playlistUri: "3H6YJ47QOQiC74hZNVUU2f"
+            playlistUri: this.getSpotifyID("acid rock")
           }
         ],
         [ // Question 2
           {
             genre: "experimental hip hop",
-            playlistUri: "3bjbpsbl2mzaqFJcyQNGjE"
+            playlistUri: this.getSpotifyID("experimental hip hop")
           },
           {
             genre: "digital hardcore",
-            playlistUri: "2fqbzU1sBBZ3gW61Q7qYhp"
+            playlistUri: this.getSpotifyID("digital hardcore")
           }
         ],
         [ // Question 3
           {
             genre: "alternative hip hop",
-            playlistUri: "2kHQTJJWXc54i8mX8ndYdf"
+            playlistUri: this.getSpotifyID("alternative hip hop")
           },
           {
             genre: "noise pop",
-            playlistUri: "79vSZtZGJqNVs3KYInh42V"
+            playlistUri: this.getSpotifyID("noise pop")
           }
         ]
       ],
@@ -58,6 +59,23 @@ class Quiz extends Component {
       questionAnswers: [...questionAnswers, curQuestionAnswer],
       questionNumber: questionNumber + 1,
     })
+  }
+
+  getSpotifyID(musicgenre)
+  {
+    var spotifyIDNumber;
+      $.ajax({
+        type:"GET",
+        dataType: "text",
+        async: false,
+        url: `http://localhost:5000/playlist/` + musicgenre,
+        success: function(data){
+          spotifyIDNumber = data
+        }
+    })
+    // console.log(spotifyIDNumber)
+    return spotifyIDNumber;
+
   }
 
   render() {

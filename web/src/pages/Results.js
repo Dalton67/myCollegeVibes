@@ -6,10 +6,16 @@ import { withRouter } from "react-router";
 
 class Results extends Component {
 
+  validLoad() {
+    return (
+      this.props.location &&
+      this.props.location.state &&
+      this.props.location.state.data
+    );
+  }
+
   componentWillMount() {
-    if (this.props.location && 
-        this.props.location.state &&
-        this.props.location.state.data) {
+    if (this.validLoad()) {
       this.setState({
         data: this.props.location.state.data
       })
@@ -17,7 +23,7 @@ class Results extends Component {
   }
 
   render() {
-    if (!this.props.location.state) return <Redirect to="/" />
+    if (!this.validLoad()) return <Redirect to="/" />
     else {
       return (
         <>
@@ -36,7 +42,7 @@ class Results extends Component {
           <Container fluid>
             <Row className="quiz-header">
               <Col className="justify-center quiz-question-box">
-                <p className="quiz-question-number">Results</p>
+                <p className="quiz-question-number">your results</p>
               </Col>
             </Row>
           </Container>

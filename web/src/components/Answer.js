@@ -12,27 +12,11 @@ class Answer extends Component {
     handleClick() {
         const{ onClick, choice } = this.props
         onClick(choice)
-        console.log("clicked")
     }
-    // handleClick(){
-    //     this.setState({
-    //         clicked: true
-    //     })
-    //     $.ajax({
-    //         type:"GET",
-    //         data:'genre',
-    //         url: `https://mycollegevibes-backend.herokuapp.com/${this.props.choice}`,
-    //         success: function(data){
-    //             console.log(data);
-    //         }
-    //     })
-    // }
 
     render() {
         const { choice, playlistUri, answerClass } = this.props
         let playlistLink = "https://open.spotify.com/embed/playlist/" + playlistUri
-        console.log( (playlistLink) )
-        // let playlistLink = "https://open.spotify.com/search/" + playlistUri
 
         return (
             <div class={answerClass}>

@@ -5,8 +5,6 @@ import pandas as pd
 import numpy as np
 import requests
 import psycopg2
-from selenium import webdriver  # depends on chrome version
-from selenium.webdriver.chrome.options import Options  # same as above
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)

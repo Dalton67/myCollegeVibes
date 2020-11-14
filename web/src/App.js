@@ -25,22 +25,7 @@ export default function App() {
     return qbank;
   }
 
-  // function getSpotifyID()
-  // {
-  //   var spotifyIDNumber;
-  //     $.ajax({
-  //       type:"GET",
-  //       dataType: "text",
-  //       async: false,
-  //       url: `http://localhost:5000/playlist/hardcoded`,
-  //       success: function(data){
-  //         spotifyIDNumber = data
-  //       }
-  //   })
-  //   console.log(spotifyIDNumber)
-  //   return spotifyIDNumber;
 
-  // }
 
   return (
     <React.Fragment>
@@ -49,8 +34,6 @@ export default function App() {
           <Switch>
             <Route path="/quiz">
               {
-              /* <Quiz questions = {getQuestions()}/> */
-              // <Quiz spotifyIDNumber = {getSpotifyID()}/>
               <Quiz/>
               }
             </Route>

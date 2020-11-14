@@ -68,7 +68,7 @@ class Quiz extends Component {
         type:"GET",
         dataType: "text",
         async: false,
-        url: `http://localhost:5000/playlist/` + musicgenre,
+        url: `https://mycollegevibes-backend.herokuapp.com/playlist/` + musicgenre,
         success: function(data){
           spotifyIDNumber = data
         }

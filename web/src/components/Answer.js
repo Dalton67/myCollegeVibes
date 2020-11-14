@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import $ from "jquery"
+import Results from "../pages/Results";
  
 class Answer extends Component {
 
@@ -15,6 +17,7 @@ class Answer extends Component {
     render() {
         const { choice, playlistUri, answerClass } = this.props
         let playlistLink = "https://open.spotify.com/embed/playlist/" + playlistUri
+
         return (
             <div class={answerClass}>
                 <a 
@@ -23,7 +26,7 @@ class Answer extends Component {
                     className="answer-header"> 
                         {choice} 
                 </a>
-                <iframe 
+                <iframe
                     src={playlistLink} 
                     width="80%" 
                     height="380" 

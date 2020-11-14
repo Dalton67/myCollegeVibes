@@ -5,8 +5,16 @@ import Music1 from '../images/music-1.png';
 import Music2 from '../images/music-2.png';
 import { Container, Row, Col } from 'react-bootstrap';
 import { withRouter } from "react-router";
+import $ from "jquery"
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+
+    this.setState({ 
+        clicked: false 
+    })
+}
   render() {
     return (
       <>

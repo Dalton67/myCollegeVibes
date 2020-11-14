@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Answer from './Answer.js';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import $ from "jquery"
  
 class Question extends Component {
     constructor(props) {

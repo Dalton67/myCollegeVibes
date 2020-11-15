@@ -14,6 +14,7 @@ class Home extends Component {
     this.setState({ 
         clicked: false 
     })
+    console.log(this.props)
 }
   render() {
     return (
@@ -28,6 +29,7 @@ class Home extends Component {
             <Row className="title-text justify-center" noGutters>
               <Col>
                 <p>myCollegeVibes</p>
+                <p style = {{color:"white"}}>{this.props['University of Wisconsin-Platteville']}</p>
               </Col>
             </Row>
             <Row className="justify-center" noGutters>

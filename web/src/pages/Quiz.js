@@ -78,6 +78,7 @@ class Quiz extends Component {
 
   }
 
+
   render() {
     const { questionList, questionNumber, questionAnswers } = this.state
     if (questionNumber > questionList.length) {

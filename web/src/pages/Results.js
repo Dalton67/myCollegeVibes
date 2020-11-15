@@ -19,6 +19,8 @@ class Results extends Component {
   render() {
     if (!this.props.location.state) return <Redirect to="/" />
     else {
+      var answer = this.props.location.state.results
+      console.log(answer)
       return (
         <>
           <Navbar bg="#14">
@@ -58,7 +60,8 @@ class Results extends Component {
                 this.state.data.map(question => (
                   <Row className="results-data">
                     <Col className="results-data-box">
-                      <p className="results-data-text">{question.choices[0].genre}</p>
+                      {/* <p className="results-data-text">{question.choices[0].genre}</p> */}
+                      <p className="results-data-text">{answer[1]['university_name']}</p>
                     </Col>
                     <Col className="results-data-box">
                       <p className="results-data-text">{question.choices[1].genre}</p>

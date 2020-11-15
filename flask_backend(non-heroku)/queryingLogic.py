@@ -76,15 +76,7 @@ rock = pd.DataFrame(rock_query, columns=["genre_id", "genre_name"])
 user_selected_genres = ['country', 'rap', 'pop']
 all_university_ids = university_genres['university_id']
 all_university_ids = list(dict.fromkeys(all_university_ids))
-# for i in np.arange(1, len(request.args) + 1):
-#     genre_key = "genre" + str(i)
-#     user_selected_genres.append(request.args.get(genre_key))
 
-
-# SELECT genre_id
-# FROM all_genres
-# WHERE genre_name IN ('pop', 'country')
-# AS gid
 gids = []
 for i in range(len(user_selected_genres)):
     gids.append(int(all_genres.loc[all_genres['genre_name'] == str(
@@ -105,19 +97,30 @@ popularities_per_uids_total = sorted(
 topNCount = 0
 topN_UIDS = []
 topN_pops = []
+topN_spotifyLinks = []
 for uid_popularity_pair in popularities_per_uids_total:
-    if topNCount == 9:
+    if topNCount == 10:
         break
     else:
+        spotify_link = np.array(universities.loc[universities['university_id']
+                                                 == uid_popularity_pair[0]]['spotify_link'])[0]
         topN_UIDS.append(uid_popularity_pair[0])
         topN_pops.append(uid_popularity_pair[1])
+        topN_spotifyLinks.append(spotify_link)
         topNCount += 1
 
 final_answer = {}
 loc = 0
+rank = 1
 for id in topN_UIDS:
     name = np.array(
         universities.loc[universities['university_id'] == id])[0][1]
-    final_answer[name] = topN_pops[loc]
+    final_answer[rank] = {
+        'university_id': id,
+        'university_name': name,
+        'popularity': topN_pops[loc],
+        'spotify_link': topN_spotifyLinks[loc]
+    }
     loc += 1
+    rank += 1
 print(final_answer)

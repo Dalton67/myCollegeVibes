@@ -25,24 +25,7 @@ export default function App() {
     return qbank;
   }
 
-  function testfunction()
-  {
-      var results;
-      var converted;
-      $.ajax({
-        type:"GET",
-        async: false,
-        url: `https://mycollegevibes-backend.herokuapp.com/results?g1=country`,
-        success: function(data){
-          results = data.replace(/'/g, '"') 
-          converted = JSON.parse(results)
-        }
-    })
-    return converted 
-  }
-
-  var result = testfunction()
-  console.log(result)
+  
   return (
     <React.Fragment>
       <Router>
@@ -57,8 +40,7 @@ export default function App() {
               <Results />
             </Route>
             <Route path="/">
-              <Home {...result}/>
-            {/* <div style = {{color: "white"}}>{testfunction()}</div> */}
+              <Home/>
             </Route>
           </Switch>
         </div>

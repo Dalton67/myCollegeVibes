@@ -25,8 +25,7 @@ export default function App() {
     return qbank;
   }
 
-
-
+  
   return (
     <React.Fragment>
       <Router>
@@ -41,7 +40,7 @@ export default function App() {
               <Results />
             </Route>
             <Route path="/">
-              <Home />
+              <Home/>
             </Route>
           </Switch>
         </div>

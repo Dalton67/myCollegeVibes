@@ -4,6 +4,7 @@ import requests
 import psycopg2
 from bs4 import BeautifulSoup
 import json
+import random
 
 DB_NAME = "wesbcdcw"
 DB_USER = "wesbcdcw"
@@ -155,6 +156,15 @@ user_selected_genres = ['country', 'rap', 'pop']
 #     json.dump(genre_to_spotifyURL, f)
 # return playlist_id
 
-with open("genre_to_spotifyURL.json") as file:
-    result = json.load(file)
-print(str(result))
+arr_keys = []
+total_choices = 40
+for i in np.arange(1, total_choices + 1):
+    arr_keys.append(i)
+qbank = {key: None for key in arr_keys}
+answer_choices_indexes = random.sample(
+    range(0, len(all_genres)), total_choices)
+loc = 0
+for i in np.arange(1, total_choices + 1):
+    qbank[i] = np.array(all_genres)[answer_choices_indexes[loc]][1]
+    loc += 1
+print(qbank)

@@ -4,7 +4,7 @@ import Logo from '../images/white-spotify-logo.png';
 import { Navbar, Image, Container, Col, Row } from "react-bootstrap";
 import { Redirect } from 'react-router-dom';
 import { withRouter } from "react-router";
-import $ from 'jquery'
+import $, { param } from 'jquery'
 
 class Quiz extends Component {
 
@@ -14,213 +14,215 @@ class Quiz extends Component {
     this.getSpotifyID = this.getSpotifyID.bind(this)
     this.resultsPage = this.resultsPage.bind(this)
     this.getAllPlayListIds = this.getAllPlayListIds.bind(this)
+    this.getQuestions = this.getQuestions.bind(this)
   }
 
   componentWillMount() {
     var playListIds = this.getAllPlayListIds()
+    var questions = this.getQuestions()
+    console.log(questions)
     this.setState({
       questionList: [
         [ // Question 1
           {
-            genre: "latin pop",
-            playlistUri: playListIds["latin pop"]
+            genre: questions["1"],
+            playlistUri: playListIds[questions["1"]]
           },
           {
-            genre: "funk bh",
-            playlistUri: playListIds["funk bh"]
+            genre: questions["2"],
+            playlistUri: playListIds[questions["2"]]
           }
         ],
         [ // Question 2
           {
-            genre: "experimental hip hop",
-            playlistUri: playListIds["experimental hip hop"]
+            genre: questions["3"],
+            playlistUri: playListIds[questions["3"]]
           },
           {
-            genre: "nova mpb",
-            playlistUri: playListIds["nova mpb"]
+            genre: questions["4"],
+            playlistUri: playListIds[questions["4"]]
           }
         ],
         [ // Question 3
           {
-            genre: "alternative hip hop",
-            playlistUri: playListIds["alternative hip hop"]
+            genre: questions["5"],
+            playlistUri: playListIds[questions["5"]]
           },
           {
-            genre: "noise pop",
-            playlistUri: playListIds["noise pop"]
+            genre: questions["6"],
+            playlistUri: playListIds[questions["6"]]
           }
         ],
         [ // Question 4
           {
-            genre: "nova mpb",
-            playlistUri: this.getSpotifyID("nova mpb")
+            genre: questions["7"],
+            playlistUri: playListIds[questions["7"]]
           },
           {
-            genre: "sevillanas",
-            playlistUri: this.getSpotifyID("sevillanas")
+            genre: questions["8"],
+            playlistUri: playListIds[questions["8"]]
           }
         ],
         [ // Question 5
           {
-            genre: "belgian indie rock",
-            playlistUri: this.getSpotifyID("belgian indie rock")
+            genre: questions["9"],
+            playlistUri: playListIds[questions["9"]]
           },
           {
-            genre: "abstract beats",
-            playlistUri: this.getSpotifyID("abstract beats")
+            genre: questions["10"],
+            playlistUri: playListIds[questions["10"]]
           }
         ],
         [ // Question 6
           {
-            genre: "dark post-punk",
-            playlistUri: this.getSpotifyID("dark post-punk")
+            genre: questions["11"],
+            playlistUri: playListIds[questions["11"]]
           },
           {
-            genre: "canadian contemporary country",
-            playlistUri: this.getSpotifyID("canadian contemporary country")
+            genre: questions["12"],
+            playlistUri: playListIds[questions["12"]]
           }
         ],
         [ // Question 7
           {
-            genre: "alternative hip hop",
-            playlistUri: this.getSpotifyID("alternative hip hop")
+            genre: questions["13"],
+            playlistUri: playListIds[questions["13"]]
           },
           {
-            genre: "hamburg indie",
-            playlistUri: this.getSpotifyID("hamburg indie")
+            genre: questions["14"],
+            playlistUri: playListIds[questions["14"]]
           }
         ],
         [ // Question 8
           {
-            genre: "alternative hip hop",
-            playlistUri: this.getSpotifyID("alternative hip hop")
+            genre: questions["15"],
+            playlistUri: playListIds[questions["15"]]
           },
           {
-            genre: "new age",
-            playlistUri: this.getSpotifyID("new age")
+            genre: questions["16"],
+            playlistUri: playListIds[questions["16"]]
           }
         ],
         [ // Question 9
           {
-            genre: "japanese city pop",
-            playlistUri: this.getSpotifyID("japanese city pop")
+            genre: questions["17"],
+            playlistUri: playListIds[questions["17"]]
           },
           {
-            genre: "noise pop",
-            playlistUri: this.getSpotifyID("noise pop")
+            genre: questions["18"],
+            playlistUri: playListIds[questions["18"]]
           }
         ],
         [ // Question 10
           {
-            genre: "vintage french electronic",
-            playlistUri: this.getSpotifyID("vintage french electronic")
+            genre: questions["19"],
+            playlistUri: playListIds[questions["19"]]
           },
           {
-            genre: "bass house",
-            playlistUri: this.getSpotifyID("	bass house")
+            genre: questions["20"],
+            playlistUri: playListIds[questions["20"]]
           }
         ],
         [ // Question 11
           {
-            genre: "novo rock gaucho",
-            playlistUri: this.getSpotifyID("novo rock gaucho")
+            genre: questions["21"],
+            playlistUri: playListIds[questions["21"]]
           },
           {
-            genre: "noise pop",
-            playlistUri: this.getSpotifyID("noise pop")
+            genre: questions["22"],
+            playlistUri: playListIds[questions["22"]]
           }
         ],
         [ // Question 12
           {
-            genre: "deathstep",
-            playlistUri: this.getSpotifyID("deathstep")
+            genre: questions["23"],
+            playlistUri: playListIds[questions["23"]]
           },
           {
-            genre: "noise pop",
-            playlistUri: this.getSpotifyID("noise pop")
+            genre: questions["24"],
+            playlistUri: playListIds[questions["24"]]
           }
         ],
         [ // Question 13
           {
-            genre: "chilean hardcore",
-            playlistUri: this.getSpotifyID("chilean hardcore")
+            genre: questions["25"],
+            playlistUri: playListIds[questions["25"]]
           },
           {
-            genre: "japanese trap",
-            playlistUri: this.getSpotifyID("japanese traps")
+            genre: questions["26"],
+            playlistUri: playListIds[questions["26"]]
           }
         ],
         [ // Question 14
           {
-            genre: "alternative hip hop",
-            playlistUri: this.getSpotifyID("alternative hip hop")
+            genre: questions["27"],
+            playlistUri: playListIds[questions["27"]]
           },
           {
-            genre: "latinx alternative",
-            playlistUri: this.getSpotifyID("latinx alternative")
+            genre: questions["28"],
+            playlistUri: playListIds[questions["28"]]
           }
         ],
         [ // Question 15
           {
-            genre: "swiss singer-songwriter",
-            playlistUri: this.getSpotifyID("swiss singer-songwriter")
+            genre: questions["29"],
+            playlistUri: playListIds[questions["29"]]
           },
           {
-            genre: "noise pop",
-            playlistUri: this.getSpotifyID("noise pop")
+            genre: questions["30"],
+            playlistUri: playListIds[questions["30"]]
           }
         ],
         [ // Question 16
           {
-            genre: "alternative hip hop",
-            playlistUri: this.getSpotifyID("alternative hip hop")
+            genre: questions["31"],
+            playlistUri: playListIds[questions["31"]]
           },
           {
-            genre: "noise pop",
-            playlistUri: this.getSpotifyID("noise pop")
+            genre: questions["32"],
+            playlistUri: playListIds[questions["32"]]
           }
         ],
         [ // Question 17
           {
-            genre: "alternative hip hop",
-            playlistUri: this.getSpotifyID("alternative hip hop")
+            genre: questions["33"],
+            playlistUri: playListIds[questions["33"]]
           },
           {
-            genre: "pagode novo",
-            playlistUri: this.getSpotifyID("pagode novo")
+            genre: questions["34"],
+            playlistUri: playListIds[questions["34"]]
           }
         ],
         [ // Question 18
           {
-            genre: "chamber psych",
-            playlistUri: this.getSpotifyID("	chamber psych")
+            genre: questions["35"],
+            playlistUri: playListIds[questions["35"]]
           },
           {
-            genre: "noise pop",
-            playlistUri: this.getSpotifyID("noise pop")
+            genre: questions["36"],
+            playlistUri: playListIds[questions["36"]]
           }
         ],
         [ // Question 19
           {
-            genre: "alternative hip hop",
-            playlistUri: this.getSpotifyID("alternative hip hop")
+            genre: questions["37"],
+            playlistUri: playListIds[questions["37"]]
           },
           {
-            genre: "folk punk",
-            playlistUri: this.getSpotifyID("folk punk")
+            genre: questions["38"],
+            playlistUri: playListIds[questions["38"]]
           }
         ],
         [ // Question 20
           {
-            genre: "hungarian punk",
-            playlistUri: this.getSpotifyID("hungarian punk")
+            genre: questions["39"],
+            playlistUri: playListIds[questions["39"]]
           },
           {
-            genre: "celtic rock",
-            playlistUri: this.getSpotifyID("celtic rock")
+            genre: questions["40"],
+            playlistUri: playListIds[questions["40"]]
           }
-        ]
-        
+        ],        
       ],
       questionNumber: 1,
       questionAnswers: []
@@ -260,12 +262,23 @@ class Quiz extends Component {
         url: 'https://mycollegevibes-backend.herokuapp.com/playListIds',
         success: function(data){
           spotifyPlayListIds = data
-          // spotifyPlayListIds = JSON.parse(data.replace(/'/g, '"'))
-          // console.log(212)
-          // console.log("converted: " + spotifyPlayListIds) 
         }
     })
     return spotifyPlayListIds
+  }
+  
+  getQuestions()
+  {
+      var answerChoices;
+      $.ajax({
+        type:"GET",
+        async: false,
+        url: 'https://mycollegevibes-backend.herokuapp.com/',
+        success: function(data){
+          answerChoices = data
+        }
+    })
+    return answerChoices
   }
 
   resultsPage(object)
@@ -289,14 +302,13 @@ class Quiz extends Component {
             answers.push(elements[0] + "%20" + elements[1] + "%20" + elements[2])
          }
       }
-      var parameters = 'g1='+ answers[0] + '&g2=' + answers[1] + '&g3=' + answers[2]
-      // var parameters = 'g1='+ object[0]['answer'] + '&g2=' + object[1]['answer'] + '&g3=' + object[2]['answer'] + '&g4=' + object[3]['answer'] + '&g5=' + object[4]['answer']+ '&g6=' + object[5]['answer']+ '&g7=' + object[6]['answer']+ '&g8=' + object[7]['answer']+ '&g9=' + object[8]['answer']+ '&g10=' + object[9]['answer']
+      var parameters = 'g1='+ answers[0] + '&g2=' + answers[1] + '&g3=' + answers[2] + '&g4=' + answers[3]+ '&g5=' + answers[4]+ '&g6=' + answers[5]+ '&g7=' + answers[6]+ '&g8=' + answers[7]+ '&g9=' + answers[8]+ '&g10=' + answers[9]+ '&g11=' + answers[10]+ '&g12=' + answers[11]+ '&g13=' + answers[12]+ '&g14=' + answers[13]+ '&g15=' + answers[14]+ '&g16=' + answers[15]+ '&g17=' + answers[16]+ '&g18=' + answers[17]+ '&g19=' + answers[18]+ '&g20=' + answers[19] 
       $.ajax({
         type:"GET",
         async: false,
         url: 'https://mycollegevibes-backend.herokuapp.com/results?' + parameters,
         success: function(data){
-          results = JSON.parse(data.replace(/'/g, '"')) 
+          results = JSON.parse(data.replace(/'/g, '"'))
         }
     })
     return results 

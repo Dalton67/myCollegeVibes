@@ -32,9 +32,7 @@ export default function App() {
         <div>
           <Switch>
             <Route path="/quiz">
-              {
               <Quiz/>
-              }
             </Route>
             <Route path="/results">
               <Results />

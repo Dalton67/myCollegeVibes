@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import requests
 import psycopg2
+from bs4 import BeautifulSoup
+import json
 
 DB_NAME = "wesbcdcw"
 DB_USER = "wesbcdcw"
@@ -74,53 +76,85 @@ global rock
 rock = pd.DataFrame(rock_query, columns=["genre_id", "genre_name"])
 
 user_selected_genres = ['country', 'rap', 'pop']
-all_university_ids = university_genres['university_id']
-all_university_ids = list(dict.fromkeys(all_university_ids))
+# all_university_ids = university_genres['university_id']
+# all_university_ids = list(dict.fromkeys(all_university_ids))
 
-gids = []
-for i in range(len(user_selected_genres)):
-    gids.append(int(all_genres.loc[all_genres['genre_name'] == str(
-        user_selected_genres[i])]['genre_id']))
+# gids = []
+# for i in range(len(user_selected_genres)):
+#     gids.append(int(all_genres.loc[all_genres['genre_name'] == str(
+#         user_selected_genres[i])]['genre_id']))
 
-popularities_per_uids_total = {key: 0 for key in all_university_ids}
-for i in range(len(user_selected_genres)):
-    uids_per_genre = np.array(
-        university_genres.loc[university_genres['genre_id'] == gids[i]]['university_id'])
-    popularities_per_uids_per_genre = np.array(
-        university_genres.loc[university_genres['genre_id'] == gids[i]]['popularity'])
-    for j in range(len(popularities_per_uids_per_genre)):
-        popularities_per_uids_total[uids_per_genre[j]
-                                    ] += popularities_per_uids_per_genre[j]
+# popularities_per_uids_total = {key: 0 for key in all_university_ids}
+# for i in range(len(user_selected_genres)):
+#     uids_per_genre = np.array(
+#         university_genres.loc[university_genres['genre_id'] == gids[i]]['university_id'])
+#     popularities_per_uids_per_genre = np.array(
+#         university_genres.loc[university_genres['genre_id'] == gids[i]]['popularity'])
+#     for j in range(len(popularities_per_uids_per_genre)):
+#         popularities_per_uids_total[uids_per_genre[j]
+#                                     ] += popularities_per_uids_per_genre[j]
 
-popularities_per_uids_total = sorted(
-    popularities_per_uids_total.items(), key=lambda x: x[1], reverse=True)
-topNCount = 0
-topN_UIDS = []
-topN_pops = []
-topN_spotifyLinks = []
-for uid_popularity_pair in popularities_per_uids_total:
-    if topNCount == 10:
-        break
-    else:
-        spotify_link = np.array(universities.loc[universities['university_id']
-                                                 == uid_popularity_pair[0]]['spotify_link'])[0]
-        topN_UIDS.append(uid_popularity_pair[0])
-        topN_pops.append(uid_popularity_pair[1])
-        topN_spotifyLinks.append(spotify_link)
-        topNCount += 1
+# popularities_per_uids_total = sorted(
+#     popularities_per_uids_total.items(), key=lambda x: x[1], reverse=True)
+# topNCount = 0
+# topN_UIDS = []
+# topN_pops = []
+# topN_spotifyLinks = []
+# for uid_popularity_pair in popularities_per_uids_total:
+#     if topNCount == 10:
+#         break
+#     else:
+#         spotify_link = np.array(universities.loc[universities['university_id']
+#                                                  == uid_popularity_pair[0]]['spotify_link'])[0]
+#         topN_UIDS.append(uid_popularity_pair[0])
+#         topN_pops.append(uid_popularity_pair[1])
+#         topN_spotifyLinks.append(spotify_link)
+#         topNCount += 1
 
-final_answer = {}
-loc = 0
-rank = 1
-for id in topN_UIDS:
-    name = np.array(
-        universities.loc[universities['university_id'] == id])[0][1]
-    final_answer[rank] = {
-        'university_id': id,
-        'university_name': name,
-        'popularity': topN_pops[loc],
-        'spotify_link': topN_spotifyLinks[loc]
-    }
-    loc += 1
-    rank += 1
-print(final_answer)
+# final_answer = {}
+# loc = 0
+# rank = 1
+# for id in topN_UIDS:
+#     name = np.array(
+#         universities.loc[universities['university_id'] == id])[0][1]
+#     final_answer[rank] = {
+#         'university_id': id,
+#         'university_name': name,
+#         'popularity': topN_pops[loc],
+#         'spotify_link': topN_spotifyLinks[loc]
+#     }
+#     loc += 1
+#     rank += 1
+# print(final_answer)
+
+# genre_names = np.array(all_genres['genre_name'])
+# url = ""
+# count = 1
+# genre_to_spotifyURL = {}
+# for genreKey in genre_names:
+#     if len(genreKey.split(' ')) == 1:
+#         url = "http://everynoise.com/everynoise1d.cgi?root=" + genreKey + "&scope=all"
+#     else:
+#         elements = genreKey.split(' ')
+#         result = ''
+#         for i in range(len(genreKey.split(' '))):
+#             if i != len(genreKey.split(' ')) - 1:
+#                 result += elements[i] + "%20"
+#             else:
+#                 result += elements[i]
+#         url = "http://everynoise.com/everynoise1d.cgi?root=" + result + "&scope=all"
+#     page = requests.get(url)
+#     soup = BeautifulSoup(page.text, 'html.parser')
+#     playlist_id = soup.find('iframe').get('src')
+#     playlist_id = playlist_id[playlist_id.rfind(":")+1:]
+#     print(str(count) + ": " + playlist_id)
+#     count += 1
+#     genre_to_spotifyURL[genreKey] = playlist_id
+
+# with open("genre_to_spotifyURL.json", "w") as f:
+#     json.dump(genre_to_spotifyURL, f)
+# return playlist_id
+
+with open("genre_to_spotifyURL.json") as file:
+    result = json.load(file)
+print(str(result))

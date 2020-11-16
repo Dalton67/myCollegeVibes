@@ -1,53 +1,53 @@
-
 @font-face {
-  font-family: 'RobotoMono-Thin';
-  font-weight: normal;;
+  font-family: "RobotoMono-Thin";
+  font-weight: normal;
   font-style: normal;
-  src: url('./fonts/robotomono/static/RobotoMono-Thin.ttf') format('truetype');
+  src: url("./fonts/robotomono/static/RobotoMono-Thin.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'RobotoMono-Bold';
-  font-weight: normal;;
+  font-family: "RobotoMono-Bold";
+  font-weight: normal;
   font-style: normal;
-  src: url('./fonts/robotomono/static/RobotoMono-Bold.ttf') format('truetype');
+  src: url("./fonts/robotomono/static/RobotoMono-Bold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'RobotoMono-BoldItalic';
-  font-weight: normal;;
+  font-family: "RobotoMono-BoldItalic";
+  font-weight: normal;
   font-style: normal;
-  src: url('./fonts/robotomono/static/RobotoMono-BoldItalic.ttf') format('truetype');
+  src: url("./fonts/robotomono/static/RobotoMono-BoldItalic.ttf")
+    format("truetype");
 }
 
 @font-face {
-  font-family: 'RobotoMono-Light';
-  font-weight: normal;;
+  font-family: "RobotoMono-Light";
+  font-weight: normal;
   font-style: normal;
-  src: url('./fonts/robotomono/static/RobotoMono-Light.ttf') format('truetype');
+  src: url("./fonts/robotomono/static/RobotoMono-Light.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'RobotoMono-Medium';
-  font-weight: normal;;
+  font-family: "RobotoMono-Medium";
+  font-weight: normal;
   font-style: normal;
-  src: url('./fonts/robotomono/static/RobotoMono-Medium.ttf') format('truetype');
+  src: url("./fonts/robotomono/static/RobotoMono-Medium.ttf") format("truetype");
 }
 
 :root {
-  --green: #1DB954;
+  --green: #1db954;
   --green-dark: #0c8838;
-  --timber: #D3D0CB;
-  --ash: #BDCEBD;
-  --grey: #5C6784;
-  --grey-dark: #3A4562;
+  --timber: #d3d0cb;
+  --ash: #bdcebd;
+  --grey: #5c6784;
+  --grey-dark: #3a4562;
   --black: #191414;
-  --charcoal: #3B3E4C;
-  --eton: #78C590;
+  --charcoal: #3b3e4c;
+  --eton: #78c590;
 }
 
 span.navbar-text {
-  font-family: 'RobotoMono-Thin';
+  font-family: "RobotoMono-Thin";
 }
 
 body {
@@ -58,22 +58,22 @@ body {
 }
 
 .btn-to-quiz {
-  display:inline-block;
-  padding:1em 0.8em;
-  border-radius:0.75em;
+  display: inline-block;
+  padding: 1em 0.8em;
+  border-radius: 0.75em;
   box-sizing: border-box;
-  text-decoration:none;
-  font-family:'RobotoMono-BoldItalic';
-  font-weight:400;
+  text-decoration: none;
+  font-family: "RobotoMono-BoldItalic";
+  font-weight: 400;
   font-size: 3vw;
-  color:var(--green);
+  color: var(--green);
   background-color: var(--timber);
   box-shadow: -10px 10px var(--grey);
-  text-align:center;
-  position:relative;
+  text-align: center;
+  position: relative;
 }
 
-.btn-to-quiz:active{
+.btn-to-quiz:active {
   background-color: var(--grey);
   box-shadow: -10px 10px var(--grey-dark);
 }
@@ -86,7 +86,7 @@ body {
 }  */
 
 .logo {
-  width:80%;
+  width: 80%;
 }
 
 .answer1 {
@@ -102,7 +102,7 @@ body {
 a.answer-header {
   display: inline-block;
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
   width: 320px;
   height: 320px;
   line-height: 320px;
@@ -111,16 +111,20 @@ a.answer-header {
   text-align: center;
   vertical-align: middle;
   overflow: hidden;
-  background-image: -webkit-linear-gradient(45deg, var(--black) 0%, var(--green) 100%);    
+  background-image: -webkit-linear-gradient(
+    45deg,
+    var(--black) 0%,
+    var(--green) 100%
+  );
   background-image: linear-gradient(45deg, var(--black) 0%, var(--green) 100%);
-  transition: .4s;
+  transition: 0.4s;
   margin-top: 1em;
 }
 
 a.answer-header:hover {
--webkit-transform: rotate(10deg);
--ms-transform: rotate(10deg);
-transform: rotate(10deg);
+  -webkit-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
 }
 
 .playlist {
@@ -134,12 +138,12 @@ transform: rotate(10deg);
 p {
   margin-top: 4vh;
   margin-bottom: 4vh;
-  font-family: 'RobotoMono-Thin';
+  font-family: "RobotoMono-Thin";
   color: var(--green);
 }
 
 .title-text {
-  font-size: 4.5vw; 
+  font-size: 4.5vw;
 }
 
 .quiz-title-text {
@@ -152,12 +156,12 @@ p {
 }
 
 .quiz-question-box {
-  background-color: var(--eton);  
+  background-color: var(--eton);
 }
 
 .quiz-question-number {
   color: var(--green-dark);
-  font-family: 'RobotoMono-Bold';
+  font-family: "RobotoMono-Bold";
 }
 
 .quiz-question-text {
@@ -192,7 +196,7 @@ p {
 
 .results-header-text {
   color: white;
-  font-family: 'RobotoMono-Medium';
+  font-family: "RobotoMono-Medium";
 }
 
 .results-data {

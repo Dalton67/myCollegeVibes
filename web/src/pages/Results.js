@@ -19,8 +19,8 @@ class Results extends Component {
   render() {
     if (!this.props.location.state) return <Redirect to="/" />
     else {
-      var answer = this.props.location.state.results
-      console.log(answer)
+      var answers = this.props.location.state.results
+      console.log(answers)
       return (
         <>
           <Navbar bg="#14">
@@ -61,7 +61,7 @@ class Results extends Component {
                   <Row className="results-data">
                     <Col className="results-data-box">
                       {/* <p className="results-data-text">{question.choices[0].genre}</p> */}
-                      <p className="results-data-text">{answer[1]['university_name']}</p>
+                      <p className="results-data-text">{answers[1]['university_name']}</p>
                     </Col>
                     <Col className="results-data-box">
                       <p className="results-data-text">{question.choices[1].genre}</p>
@@ -75,6 +75,41 @@ class Results extends Component {
             </Container>
             </Tab>
             <Tab eventKey="universities" title="Your Universities">
+            <Container className="justify-center" fluid>
+              <Row className="results-header">
+                <Col className="results-header-box" lg="1">
+                  <p className="results-header-text">Rank</p>
+                </Col>
+                <Col className="results-header-box">
+                  <p className="results-header-text">University Name</p>
+                </Col>
+                <Col className="results-header-box" lg="1">
+                  <p className="results-header-text">Popularity</p>
+                </Col>
+                <Col className="results-header-box">
+                  <p className="results-header-text">Spotify Link</p>
+                </Col>
+              </Row>
+              {
+                Object.keys(answers).map(rank => (
+
+                  <Row className="results-data">
+                    <Col className="results-data-box" lg="1">
+                      <p className="results-data-text">{rank}</p>
+                    </Col>
+                    <Col className="results-data-box">
+                      <p className="results-data-text">{answers[rank]['university_name']}</p>
+                    </Col>
+                    <Col className="results-data-box" lg="1">
+                      <p className="results-data-text">{answers[rank]['popularity']}</p>
+                    </Col>
+                    <Col className="results-data-box">
+                     <div className="results-data-text mt-4"> <a target="_blank" href={answers[rank]['spotify_link']}>{answers[rank]['spotify_link']}</a></div>
+                    </Col>
+                  </Row>
+                ))
+              }
+            </Container>
             </Tab>
           </Tabs>
         </>

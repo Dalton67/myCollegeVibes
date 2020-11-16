@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import requests
 import psycopg2
+import json
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
@@ -126,47 +127,18 @@ def test_function(genre):
     return str(top_10)
 
 
-@app.route('/')
-def questions():
-    return {
-        "Q1": "country or pop",
-        "Q2": "electronic or pop",
-        "Q3": "folk or pop",
-        "Q4": "pop or funk",
-        "Q5": "indie or pop",
-        "Q6": "pop or rap",
-        "Q7": "religious or pop",
-        "Q8": "rock or pop",
-    }
-
-# adding route for function that take genre as input and returns spotify id
-
-
-# @app.route('/playlist/<string:genreKey>')
-# def getPlayListId_save(genreKey):
-#     options = Options()
-#     options.headless = True
-#     options.add_argument("--window-size=1920,1200")
-
-#     # DRIVER_PATH = 'chromedriver.exe'
-#     DRIVER_PATH = "chromedriver.exe"
-#     driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
-#     # -----
-#     # to add way to replace with classic%20.. with actual genre
-#     # will parse for spaces with %20
-#     # -----
-#     driver.get('https://open.spotify.com/search/classic%20pop%27')
-#     # hardcoded above for now
-#     page = driver.page_source
-#     page_soup = BeautifulSoup(page, 'html.parser')
-#     playlist_id = ""
-#     for link in page_soup.find_all('a'):
-#         if "/playlist/" in str(link.get('href')):
-#             print("link.get ", str(link.get('href')))
-#             playlist_id = str(link.get('href'))[
-#                 str(link.get('href')).rfind("/")+1:]
-#             #print("playlist ID : ",playlist_id)
-#             return playlist_id
+# @app.route('/')
+# def questions():
+#     return {
+#         "Q1": "country or pop",
+#         "Q2": "electronic or pop",
+#         "Q3": "folk or pop",
+#         "Q4": "pop or funk",
+#         "Q5": "indie or pop",
+#         "Q6": "pop or rap",
+#         "Q7": "religious or pop",
+#         "Q8": "rock or pop",
+#     }
 
 
 @app.route('/playlist/<string:genreKey>')
@@ -188,6 +160,13 @@ def getPlayListId(genreKey):
     playlist_id = soup.find('iframe').get('src')
     playlist_id = playlist_id[playlist_id.rfind(":")+1:]
     return playlist_id
+
+
+@app.route('/playListIds')
+def getAllPlayListIds():
+    with open("genre_to_spotifyURL.json") as file:
+        result = json.load(file)
+    return str(result)
 
 
 if __name__ == '__main__':

@@ -165,6 +165,6 @@ answer_choices_indexes = random.sample(
     range(0, len(all_genres)), total_choices)
 loc = 0
 for i in np.arange(1, total_choices + 1):
-    qbank[i] = answer_choices_indexes[loc]
+    qbank[i] = np.array(all_genres)[answer_choices_indexes[loc]][1]
     loc += 1
 print(qbank)

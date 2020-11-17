@@ -1,3 +1,7 @@
+This folder is tracked using a separate git file, so you need to use `git add *` and `git commit -m <message>` to update it.
+Then to deploy those changes to Heroku, you use `git push heroku master`
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

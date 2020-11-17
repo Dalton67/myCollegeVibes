@@ -66,8 +66,7 @@ class Results extends Component {
                 this.state.data.map(question => (
                   <Row className="results-data">
                     <Col className="results-data-box">
-                      {/* <p className="results-data-text">{question.choices[0].genre}</p> */}
-                      <p className="results-data-text">{answers[1]['university_name']}</p>
+                      <p className="results-data-text">{question.choices[0].genre}</p>
                     </Col>
                     <Col className="results-data-box">
                       <p className="results-data-text">{question.choices[1].genre}</p>
@@ -89,7 +88,7 @@ class Results extends Component {
                 <Col className="results-header-box">
                   <p className="results-header-text">University Name</p>
                 </Col>
-                <Col className="results-header-box" lg="1">
+                <Col className="results-header-box" lg="2">
                   <p className="results-header-text">Popularity</p>
                 </Col>
                 <Col className="results-header-box">
@@ -106,7 +105,7 @@ class Results extends Component {
                     <Col className="results-data-box">
                       <p className="results-data-text">{answers[rank]['university_name']}</p>
                     </Col>
-                    <Col className="results-data-box" lg="1">
+                    <Col className="results-data-box" lg="2">
                       <p className="results-data-text">{answers[rank]['popularity']}</p>
                     </Col>
                     <Col className="results-data-box">

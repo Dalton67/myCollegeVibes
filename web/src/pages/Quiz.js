@@ -25,8 +25,8 @@ class Quiz extends Component {
       questionList: [
         [ // Question 1
           {
-            genre: "rio grande do sul indie",
-            playlistUri: playListIds["rio grande do sul indie"]
+            genre: questions["1"],
+            playlistUri: playListIds[questions["1"]]
           },
           {
             genre: questions["2"],
@@ -35,8 +35,8 @@ class Quiz extends Component {
         ],
         [ // Question 2
           {
-            genre: "j-rock",
-            playlistUri: playListIds["j-rock"]
+            genre: questions["3"],
+            playlistUri: playListIds[questions["3"]]
           },
           {
             genre: questions["4"],

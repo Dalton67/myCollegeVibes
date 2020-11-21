@@ -25,8 +25,8 @@ class Quiz extends Component {
       questionList: [
         [ // Question 1
           {
-            genre: questions["1"],
-            playlistUri: playListIds[questions["1"]]
+            genre: "rio grande do sul indie",
+            playlistUri: playListIds["rio grande do sul indie"]
           },
           {
             genre: questions["2"],
@@ -35,8 +35,8 @@ class Quiz extends Component {
         ],
         [ // Question 2
           {
-            genre: questions["3"],
-            playlistUri: playListIds[questions["3"]]
+            genre: "j-rock",
+            playlistUri: playListIds["j-rock"]
           },
           {
             genre: questions["4"],
@@ -291,15 +291,22 @@ class Quiz extends Component {
          {
             answers.push(object[i]['answer'])
          }
-         else if(object[i]['answer'].split(' ').length == 2)
+         else
          {
             var elements = object[i]['answer'].split(' ')
-            answers.push(elements[0] + "%20" + elements[1])
-         }
-         else if(object[i]['answer'].split(' ').length == 3)
-         {
-            var elements = object[i]['answer'].split(' ')
-            answers.push(elements[0] + "%20" + elements[1] + "%20" + elements[2])
+            var format = ""
+            for(var j = 0; j < elements.length;j++)
+            {
+              if(j < elements.length -1)
+              {
+                format = format + elements[j] + "%20"
+              }
+              else
+              {
+                format = format + elements[j]
+              }
+            }
+            answers.push(format)
          }
       }
       var parameters = 'g1='+ answers[0] + '&g2=' + answers[1] + '&g3=' + answers[2] + '&g4=' + answers[3]+ '&g5=' + answers[4]+ '&g6=' + answers[5]+ '&g7=' + answers[6]+ '&g8=' + answers[7]+ '&g9=' + answers[8]+ '&g10=' + answers[9]+ '&g11=' + answers[10]+ '&g12=' + answers[11]+ '&g13=' + answers[12]+ '&g14=' + answers[13]+ '&g15=' + answers[14]+ '&g16=' + answers[15]+ '&g17=' + answers[16]+ '&g18=' + answers[17]+ '&g19=' + answers[18]+ '&g20=' + answers[19] 
